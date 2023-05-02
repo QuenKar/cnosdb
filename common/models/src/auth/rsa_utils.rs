@@ -4,8 +4,9 @@ use snafu::ResultExt;
 use super::{Result, RsaSnafu};
 
 pub fn verify(private_key_pem: &[u8], passphrase: &str, public_key_pem: &[u8]) -> Result<bool> {
-    // 如果用户设置了公钥
-    // 查看客户端有没有携带私钥，没有则报错
+    // If the user sets a public key
+    // If the user has set a public key to check if the client carries a private key,
+    // if not, an error will be reported.
     let data = passphrase.as_bytes();
 
     // read pub & private key
